@@ -1,7 +1,7 @@
 # model training
 python joint_training.py \
     --model_name_or_path configs\
-    --init_checkpoint /content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_generator.pkl \
+    --init_checkpoint "/content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_generator.pkl" \
     --train_input_file data/arxiv_train.db \
     --eval_input_file data/arxiv_test.txt \
     --output_dir outputs/joint_arxiv \
@@ -12,8 +12,8 @@ python joint_training.py \
     --num_optim_steps 16000 \
     --encoder_model_type ance_roberta \
     --pretrained_model_cfg bert-base-uncased \
-    --model_file /content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_retriever.pkl \
-    --ctx_file /content/drive/My Drive/Colab Notebooks/RetGen/data/wiki.txt \
+    --model_file "/content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_retriever.pkl" \
+    --ctx_file "/content/drive/My Drive/Colab Notebooks/RetGen/data/wiki.txt" \
     --num_shards 1 \
     --batch_size 16 \
     --n_docs 2 \
