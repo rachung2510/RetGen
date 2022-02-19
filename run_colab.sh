@@ -13,7 +13,7 @@ python joint_training.py \
     --encoder_model_type ance_roberta \
     --pretrained_model_cfg bert-base-uncased \
     --model_file models/arxiv_retriever.pkl \
-    --ctx_file data/wiki.txt \
+    --ctx_file ../drive/wiki.txt \
     --num_shards 1 \
     --batch_size 16 \
     --n_docs 2 \
