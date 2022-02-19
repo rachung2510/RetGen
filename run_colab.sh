@@ -1,7 +1,7 @@
 # model training
 python joint_training.py \
     --model_name_or_path configs\
-    --init_checkpoint /content/drive/My Drive/Colab Notebooks/RetGen/arxiv_generator.pkl \
+    --init_checkpoint /content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_generator.pkl \
     --train_input_file data/arxiv_train.db \
     --eval_input_file data/arxiv_test.txt \
     --output_dir outputs/joint_arxiv \
