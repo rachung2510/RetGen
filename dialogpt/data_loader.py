@@ -324,6 +324,8 @@ class DynamicBatchingLoader(object):
                 context_len, response_len)
 
     def get_len(self, corpus):
-        n_line = int(sp.check_output(f"wc -l {corpus}".split(),
-                                     universal_newlines=True).split()[0])
+        with open(corpus, 'rt', encoding="utf8") as f:
+            n_line = len(f.readlines())
+##        n_line = int(sp.check_output(f"wc -l {corpus}".split(),
+##                                     universal_newlines=True).split()[0])
         return n_line

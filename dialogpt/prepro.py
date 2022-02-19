@@ -18,8 +18,10 @@ from env import END_OF_TEXT_TOKEN, TOKEN_TYPE_CXT, TOKEN_TYPE_DOC
 from gpt2_training.train_utils import InputFeatures_train as InputFeatures
 
 def _get_file_len(corpus):
-    n_line = int(sp.check_output(f"wc -l {corpus}".split(),
-                                 universal_newlines=True).split()[0])
+    with open(corpus, 'rt', encoding="utf8") as f:
+        n_line = len(f.readlines())
+##    n_line = int(sp.check_output(f"wc -l {corpus}".split(),
+##                                 universal_newlines=True).split()[0])
     return n_line
 
 def _norm_text(text):

@@ -20,6 +20,10 @@ from transformers.modeling_roberta import RobertaConfig, RobertaModel, RobertaFo
 from transformers.optimization import AdamW
 from transformers.tokenization_bert import BertTokenizer
 from transformers.tokenization_roberta import RobertaTokenizer
+##from transformers.models.bert.modeling_bert import BertConfig, BertModel
+##from transformers.models.roberta.modeling_roberta import RobertaConfig, RobertaModel, RobertaForSequenceClassification
+##from transformers.models.bert.tokenization_bert import BertTokenizer
+##from transformers.models.roberta.tokenization_roberta import RobertaTokenizer
 
 from dpr.utils.data_utils import Tensorizer
 from dpr.models.ance_models import NLL

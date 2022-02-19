@@ -31,7 +31,14 @@ from dpr.options import add_encoder_params, setup_args_gpu, print_args, set_enco
 from dpr.utils.data_utils import Tensorizer
 from dpr.utils.model_utils import setup_for_distributed_mode, get_model_obj, load_states_from_checkpoint,move_to_device,load_states_from_checkpoint_only_model
 
-csv.field_size_limit(sys.maxsize)
+maxInt = sys.maxsize
+while True:
+    try:
+        csv.field_size_limit(maxInt)
+        break
+    except OverflowError:
+        maxInt = int(maxInt/10)
+##csv.field_size_limit(sys.maxsize)
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -42,6 +49,7 @@ logger.addHandler(console)
 
 def gen_ctx_vectors(ctx_rows: List[Tuple[object, str, str]], model: nn.Module, tensorizer: Tensorizer,
                     args, insert_title: bool = False) -> List[Tuple[object, np.array]]:
+    logger.info('gen_ctx_vectors')
     n = len(ctx_rows)
     bsz = args.batch_size
     total = 0
@@ -69,6 +77,8 @@ def gen_ctx_vectors(ctx_rows: List[Tuple[object, str, str]], model: nn.Module, t
             for i in range(out.size(0))
         ])
 
+        if total == 100:
+            logger.info('Encoded passages %d', total)
         if total % 100000 == 0:
             logger.info('Encoded passages %d', total)
 
@@ -105,7 +115,7 @@ def main(args):
     logger.info('reading data from file=%s', args.ctx_file)
 
     rows = []
-    with open(args.ctx_file) as tsvfile:
+    with open(args.ctx_file, encoding="utf-8") as tsvfile:
         reader = csv.reader(tsvfile, delimiter='\t')
 
         rows.extend([(row[0], row[1], row[2]) for row in reader if row[0] != 'id' and all([len(row[0])!=0,len(row[1])>=10,len(row[2])!=0])])

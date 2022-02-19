@@ -1,0 +1,7 @@
+file	location	change
+dialogpt/prepo.py	_get_file_len(corpus)	replace subprocess method
+dialogpt/data_loader.py	get_len(self, corpus)	replace subprocess method
+dense_retriever.py	csv.field_size_limit(sys.maxsize)	solve overflow error
+generate_dense_embeddings.py	csv.field_size_limit(sys.maxsize)	solve overflow error
+dense_retriever.py	with open(ctx_file) as tsvfile:	add encoding=utf-8
+generate_dense_embeddings.py 	with open(args.ctx_file) as tsvfile	add encoding=utf-8

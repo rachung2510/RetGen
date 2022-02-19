@@ -34,7 +34,14 @@ from dpr.utils.data_utils import Tensorizer
 from dpr.utils.model_utils import setup_for_distributed_mode, get_model_obj, load_states_from_checkpoint
 from dpr.indexer.faiss_indexers import DenseIndexer, DenseHNSWFlatIndexer, DenseFlatIndexer
 
-csv.field_size_limit(sys.maxsize)
+maxInt = sys.maxsize
+while True:
+    try:
+        csv.field_size_limit(maxInt)
+        break
+    except OverflowError:
+        maxInt = int(maxInt/10)
+##csv.field_size_limit(sys.maxsize)
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -149,7 +156,7 @@ def validate(passages: Dict[object, Tuple[str, str]], answers: List[List[str]],
 def load_passages(ctx_file: str) -> Dict[object, Tuple[str, str]]:
     docs = {}
     logger.info('Reading data from: %s', ctx_file)
-    with open(ctx_file) as tsvfile:
+    with open(ctx_file, encoding="utf-8") as tsvfile:
 
         for row in tsvfile:
             row = row.strip().split('\t')
