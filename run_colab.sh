@@ -14,7 +14,7 @@ CUDA_VISIBLE_DEVICES=0 python joint_training.py \
     --pretrained_model_cfg bert-base-uncased \
     --model_file "/content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_retriever.pkl" \
     --ctx_file "/content/drive/My Drive/Colab Notebooks/RetGen/data/wiki.txt" \
-    --num_shards 100 \
+    --num_shards 10000 \
     --batch_size 8 \
     --n_docs 2 \
     --encoding \
