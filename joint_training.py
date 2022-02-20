@@ -473,7 +473,7 @@ while True:
 
     if not args.g_only:
         retriever_infer, all_passages = init_retriever(args, eval_on_each=args.eval_on_each,
-                                                    encoder=copy.deepcopy(bi_encoder.module.question_model), tensorizer=tensorizer,
+                                                    encoder=copy.deepcopy(bi_encoder.question_model), tensorizer=tensorizer,
                                                     force_index=True, file_suffix = args.file_suffix)
 
     if global_step >= args.num_optim_steps:
