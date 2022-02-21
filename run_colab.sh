@@ -1,7 +1,7 @@
 # model training
 CUDA_VISIBLE_DEVICES=0 python joint_training.py \
     --model_name_or_path configs\
-    --init_checkpoint "/content/drive/My Drive/Colab Notebooks/RetGen/models/generator-pretrain-step-400.pkl" \
+    --init_checkpoint "/content/drive/My Drive/Colab Notebooks/RetGen/models/arxiv_generator.pkl" \
     --train_input_file "/content/drive/My Drive/Colab Notebooks/RetGen/data/arxiv_train.512len.db" \
     --eval_input_file data/arxiv_test.txt \
     --output_dir "/content/drive/My Drive/Colab Notebooks/RetGen/outputs/joint_arxiv" \
