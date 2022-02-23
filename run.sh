@@ -1,3 +1,7 @@
+# This shell script was modified by Rachel
+# num_shards increased to 100 to decrease training time
+# batch_size decreased to 8 to decrease RAM usage
+
 # model training
 CUDA_VISIBLE_DEVICES=0 python joint_training.py \
     --model_name_or_path configs\
@@ -19,18 +23,3 @@ CUDA_VISIBLE_DEVICES=0 python joint_training.py \
     --n_docs 2 \
     --encoding \
     --load_trained_model      
-
-# evaluating checkpoint  hf_bert
-#CUDA_VISIBLE_DEVICES=0 python eval_checkpoint.py \
-#        --eval_mode rank \
-#        --encoder_model_type ance_roberta \
-#        --pretrained_model_cfg bert-base-uncased \
-#        --model_file models/reddit_retriever.pkl \
-#        --qa_file data/2k_positive.txt \
-#        --ctx_file data/10k.txt \
-#        --n_docs 50 \
-#        --batch_size 64 \
-#        --shard_id 0 \
-#        --num_shards 1 \
-#        --load_trained_model \
-#        --encoding
