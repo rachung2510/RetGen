@@ -1,2 +1,6 @@
-
 **/__pycache__/**
+data/arxiv_train.tsv
+data/arxiv_train_raw.tsv
+data/wiki.txt
+dialogpt/models/
+models/
